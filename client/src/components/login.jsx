@@ -2,10 +2,6 @@ import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import './form.css';
-import {Icon} from 'react-icons-kit';
-import {eyeOff} from 'react-icons-kit/feather/eyeOff';
-import {eye} from 'react-icons-kit/feather/eye';
-
 
 function Login() {
     const [login, setLogin] = useState({
@@ -26,7 +22,7 @@ function Login() {
                 data: login
             }).then((res) => {
                 localStorage.setItem('authorization', res.data.AuthToken);
-                // alert("connected");
+                alert("login successful and connected to 'dashboard'");
                 Navigate("/dashboard");
                 // <Link to='/dashboard' />
             }).catch((err) => {
@@ -37,9 +33,6 @@ function Login() {
         setLogin({ userName: "", password: "" });
     }
 
-    // const handleSubmit = () => {
-    //     <Navigate to='/user/register' />
-    // }
     const inputHandle = (e, id) => {
         if (id === 'username') {
             setLogin({ ...login, userName: e.target.value });
@@ -48,20 +41,6 @@ function Login() {
         }
     }
     
-    // password visibility on/off
-    const [type, setType] = useState('password');
-    const [icon, setIcon] = useState(eyeOff);
-
-    const handleToggle = () => {
-        if(type === 'password'){
-            setIcon(eye);
-            setType('text');
-        }else{
-            setIcon(eyeOff);
-            setType('password');
-        }
-    }
-
     return (
         <div className="reg-container">
             <div className="reg-form">
@@ -72,7 +51,7 @@ function Login() {
                     <form>
                         <div className="inputs"><input type="text" placeholder="User Name" onChange={(e) => inputHandle(e, 'username')} value={login.userName}></input></div>
                         <div className="inputs"><input type="password" placeholder="Password" onChange={(e) => inputHandle(e, 'password')} value={login.password}></input>
-                            <span onClick={handleToggle} style={{display:"none"}}><Icon icon={icon} size={20} /></span>
+                            {/* <span onClick={handleToggle} style={{display:"none"}}><Icon icon={icon} size={20} /></span> */}
                         </div>
                         <div className="btns">
                             <button onClick={handleLogin} id='regBtn'>Login</button>

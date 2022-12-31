@@ -1,25 +1,27 @@
-const mongoose = require('mongoose');
-const express = require('express');
-const userController = require('./routes/user');
+const Express = require("express")
+const mongoose = require("mongoose")
+const cors = require("cors")
+const TodoController = require("./Routes/Todo")
+const UserController = require("./Routes/User")
+require("dotenv").config()
 
-const app = express();
-app.use(express.json({limit:'30mb', extended:true}))
+const app = Express()
+app.use(Express.json({limit:"30mb",extended:true}))
+app.use(cors())
 
-require("dotenv").config();
+//mongodb+srv://yash:yash@app.fmxq6.mongodb.net/ContantManager
+const Connection_Url = "mongodb+srv://krishna:spkrishna@krishnacluster.xjap0dj.mongodb.net/dreamProject?retryWrites=true&w=majority"
+const Port = process.env.PORT || 5000;
 
-//connectivity
-mongoose.connect(process.env.DB).then(() => {
-    app.listen(process.env.PORT, (err) => {
+mongoose.connect(Connection_Url).then(()=>{
+    app.listen(Port,(err)=>{
         if(!err){
-            console.log(`The server running ${process.env.PORT} and db connected`)
+            console.log(`The Server running at ${Port} And Db Has Connected`)
         }
-    });
+    })
+}).catch((err)=>{
+    console.log(err)
 })
-
-app.get("/", (req,res) => {
-    console.log("Hello Backend");
-    res.send("HEllo backend")
-})
-
 //controlling other pages
-app.use('/', userController);
+app.use("/user",UserController)
+app.use("/todo",TodoController)

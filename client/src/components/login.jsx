@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
-import { Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './form.css';
 import {Icon} from 'react-icons-kit';
 import {eyeOff} from 'react-icons-kit/feather/eyeOff';
@@ -12,7 +12,7 @@ function Login() {
         userName: "",
         password: "",
     })
-    // const navigat = useNavigate();
+    const Navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -20,13 +20,15 @@ function Login() {
             alert("username or passwrod is missing..!")
         } else {
             axios({
-                url: 'http://localhost:5000/login',
+                url: 'http://localhost:5000/user/login',
                 method: 'POST',
                 headers: {},
                 data: login
             }).then((res) => {
-                localStorage.setItem('authorization', login.data.AuthToken);
-                <Navigate to='/dashboard' />
+                localStorage.setItem('authorization', res.data.AuthToken);
+                // alert("connected");
+                Navigate("/dashboard");
+                // <Link to='/dashboard' />
             }).catch((err) => {
                 setLogin({ userName: "", password: "" });
                 alert("username or password wrong");
@@ -35,9 +37,9 @@ function Login() {
         setLogin({ userName: "", password: "" });
     }
 
-    const handleSubmit = () => {
-        <Navigate to='/register' />
-    }
+    // const handleSubmit = () => {
+    //     <Navigate to='/user/register' />
+    // }
     const inputHandle = (e, id) => {
         if (id === 'username') {
             setLogin({ ...login, userName: e.target.value });
@@ -75,7 +77,7 @@ function Login() {
                         <div className="btns">
                             <button onClick={handleLogin} id='regBtn'>Login</button>
                             <p>New user? click register</p>
-                            <button onClick={handleSubmit} id='logBtn'>Register</button>
+                           <Link to="/register"><button id='logBtn'>Register</button></Link>
                         </div>
                     </form>
                 </div>

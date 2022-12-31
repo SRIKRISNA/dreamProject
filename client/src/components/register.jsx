@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
-import { Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './form.css';
-import {Icon} from 'react-icons-kit';
-import {eyeOff} from 'react-icons-kit/feather/eyeOff';
-import {eye} from 'react-icons-kit/feather/eye';
+import { Icon } from 'react-icons-kit';
+import { eyeOff } from 'react-icons-kit/feather/eyeOff';
+import { eye } from 'react-icons-kit/feather/eye';
 
 function Register() {
     const [userData, setUserData] = useState({
@@ -12,7 +12,7 @@ function Register() {
         password: "",
         cpassword: ""
     })
-    // const navigat = useNavigate();
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,22 +20,23 @@ function Register() {
             alert("Passwords are not matching..!")
         } else {
             axios({
-                url: 'http://localhost:5000/register',
+                url: 'http://localhost:5000/user/signup',
                 method: 'POST',
                 headers: {},
                 data: userData
             }).then((res) => {
                 console.log(res);
-                <Navigate to='/' />
+                navigate('/');
+                // <Link to='/' />
             }).catch((err) => {
                 console.log(err);
             })
         }
-        setUserData({ userName: "", password: "", cpassword: "" })
+        // setUserData({ userName: "", password: "", cpassword: "" })
     }
-    const handleLogin = () => {
-        <Navigate to='/' />
-    }
+    // const handleLogin = () => {
+    //     <Navigate to='/' />
+    // }
     const inputHandle = (e, id) => {
         if (id === "username") {
             setUserData({ ...userData, userName: e.target.value })
@@ -44,22 +45,22 @@ function Register() {
         } else {
             setUserData({ ...userData, cpassword: e.target.value })
         }
-        setUserData({ userName: "", password: "", cpassword: "" })
+        // setUserData({ userName: "", password: "", cpassword: "" })
     }
 
-     // password visibility on/off
-     const [type, setType] = useState('password');
-     const [icon, setIcon] = useState(eyeOff);
- 
-     const handleToggle = () => {
-         if(type === 'password'){
-             setIcon(eye);
-             setType('text');
-         }else{
-             setIcon(eyeOff);
-             setType('password');
-         }
-     }
+    // password visibility on/off
+    const [type, setType] = useState('password');
+    const [icon, setIcon] = useState(eyeOff);
+
+    const handleToggle = () => {
+        if (type === 'password') {
+            setIcon(eye);
+            setType('text');
+        } else {
+            setIcon(eyeOff);
+            setType('password');
+        }
+    }
 
     return (
         <div className="reg-container">
@@ -79,7 +80,7 @@ function Register() {
                         <div className="btns">
                             <button onClick={handleSubmit} id='regBtn'>Register</button>
                             <p>Already registered? click login</p>
-                            <button onClick={handleLogin} id='logBtn'>Login</button>
+                            <Link to="/"> <button id='logBtn'>Login</button></Link>
                         </div>
                     </form>
                 </div>

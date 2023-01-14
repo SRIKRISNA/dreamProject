@@ -1,0 +1,82 @@
+
+.dFlex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product_container{
+    @extend .dFlex;
+    position: relative;
+    width: 80%;
+    height: 100%;
+    margin: 50px auto;
+    padding: 50px 0 0;
+    box-sizing: border-box;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    h1{
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: red;
+        font-size: 10.5vw;
+    }
+    .card{
+        width: 30%;
+        border-radius: 15px;
+        @extend .dFlex;
+        flex-direction: column;
+        position: relative;
+        transform: scale(.8);
+        transition: all .3s ease-in-out;
+        margin-bottom:50px ;
+        .card_img{
+            margin-top: -5vw;
+            img{
+                width: 200px;
+            }
+        }
+        .card_header{
+            @extend .dFlex;
+            flex-direction: column;
+            color:rgb(194, 110, 0);
+            margin: 25px 0;
+            h1{
+            font-size: 18px;
+            }
+            p{
+                font-size: 14px;
+                text-align: center;
+                color: green;
+                margin: 8px 0;
+            }
+            .price{
+                font-size: 25px;
+                color: aqua;
+                span{
+                    font-size: 15px;
+                    display: inline-block;
+                    vertical-align: top;
+                }
+            }
+        }
+    }
+    .card:hover{
+        background-color: antiquewhite;
+        transform: scale(1.1);
+        cursor: pointer;
+    }
+    .card:hover{
+        .btn{
+            background-color: red;
+            color: white;
+        }
+    }
+}
+
+.btn{
+    border-radius: 30px;
+    border: none;
+    padding: 7px 20px;
+}

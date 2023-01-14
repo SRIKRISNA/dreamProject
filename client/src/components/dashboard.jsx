@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Products from "./products/products";
 
 function Dashboard(){
 
@@ -10,6 +11,7 @@ function Dashboard(){
     return(
         <>
             <h1>Hello Dash</h1>
+            <Products/>
             <div className='logout'><button id='b-logout' type="submit" onClick={(e)=> LogOutHandler(e)} >LOGOUT</button></div>
         </>
     )

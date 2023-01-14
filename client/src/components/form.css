@@ -40,3 +40,16 @@ button:hover{
     justify-content: center;
     align-items: center;
 }
+.reg-container{
+    text-align: -webkit-center;
+    background: #fff;
+    height: 100vh;
+    display: flex;
+}
+.reg-form{
+    width: max-content;
+    padding: 10px 50px 50px;
+    box-shadow: 5px 5px 10px #879b6f73;
+    margin: auto;
+    border-radius: 10px;
+}

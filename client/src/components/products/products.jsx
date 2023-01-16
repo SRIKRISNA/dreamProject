@@ -12,7 +12,7 @@ const Products = ( ) => {
             <div className="card_header">
                 <h2>{item.product_name}</h2>
                 <p>{item.description}</p>
-                <p className="price"><span>{item.Currency}</span>{item.price} per {item.quantity}</p>
+                <p className="price"><span>{item.Currency} &nbsp; </span>{item.price} per {item.quantity}</p>
                 <div className="btn">Add to Cart</div>
             </div>
         </div>
@@ -21,7 +21,7 @@ const Products = ( ) => {
     return(
         <div>
             <div className="product_container">
-                <h1>Oil Products</h1>
+                <h1>Sweet Oil</h1>
                 {product_list}
             </div>
         </div>

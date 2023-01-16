@@ -1,7 +1,7 @@
 
 /* register form */
 *{
-    background-color: rgb(243, 243, 243);
+    /* background-color: rgb(243, 243, 243); */
     color: rgb(22, 22, 22);
 }
 input{
@@ -16,6 +16,7 @@ input, button{
 }
 input{
     width: 340px;
+    background-color: rgb(255, 255, 255);
 }
 button{
     cursor: pointer;
@@ -42,7 +43,7 @@ button:hover{
 }
 .reg-container{
     text-align: -webkit-center;
-    background: #fff;
+    /* background: rgba(243, 183, 18, 0.13); */
     height: 100vh;
     display: flex;
 }
@@ -52,4 +53,5 @@ button:hover{
     box-shadow: 5px 5px 10px #879b6f73;
     margin: auto;
     border-radius: 10px;
+    background-color: rgb(228, 228, 228);
 }

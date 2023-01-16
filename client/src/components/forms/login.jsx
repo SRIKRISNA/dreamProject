@@ -22,6 +22,8 @@ function Login() {
                 data: login
             }).then((res) => {
                 localStorage.setItem('authorization', res.data.AuthToken);
+                localStorage.setItem('Name', login.userName);
+                alert(`Welcome ${login.userName}`);
                 alert("login successful and connected to 'dashboard'");
                 Navigate("/dashboard");
                 // <Link to='/dashboard' />

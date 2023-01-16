@@ -17,18 +17,24 @@
     flex-wrap: wrap;
     h1{
         position: absolute;
+        margin-top: -70px;
         left: 0;
         top: 0;
-        color: red;
-        font-size: 10.5vw;
+        text-align: center;
+        width: 80vw;
+        opacity: 0.2;
+        font-size: 9.5vw;
+        color: green;
     }
     .card{
         width: 30%;
         border-radius: 15px;
+        background: rgb(236, 236, 236);
         @extend .dFlex;
         flex-direction: column;
+        padding: 5px;
         position: relative;
-        transform: scale(.8);
+        transform: scale(.9);
         transition: all .3s ease-in-out;
         margin-bottom:50px ;
         .card_img{
@@ -40,38 +46,39 @@
         .card_header{
             @extend .dFlex;
             flex-direction: column;
-            color:rgb(194, 110, 0);
             margin: 25px 0;
-            h1{
-            font-size: 18px;
+            h2{
+            font-size: 20px;
             }
             p{
                 font-size: 14px;
                 text-align: center;
-                color: green;
                 margin: 8px 0;
             }
             .price{
-                font-size: 25px;
-                color: aqua;
+                font-size: 18px;
+                // color: aqua;
                 span{
                     font-size: 15px;
                     display: inline-block;
                     vertical-align: top;
                 }
             }
+            .btn{
+                margin-top: 15px;
+            }
+            .btn:hover{
+                background-color: green;
+                color: white;
+            }
         }
     }
     .card:hover{
-        background-color: antiquewhite;
-        transform: scale(1.1);
+        transform: scale(1);
         cursor: pointer;
     }
     .card:hover{
-        .btn{
-            background-color: red;
-            color: white;
-        }
+        
     }
 }
 
@@ -79,4 +86,7 @@
     border-radius: 30px;
     border: none;
     padding: 7px 20px;
+    background: rgb(170, 233, 170);
+    color: green;
+    font-weight: bold;
 }
